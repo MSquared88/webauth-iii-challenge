@@ -3,15 +3,12 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
+    client: 'pg',
     connection: {
-      filename: './data/users.db3',
-    },
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      },
+      host: 'localhost',
+      port: 5432,
+      user: 'postgres',
+      database: 'postgres'
     },
     migrations: {
       directory: './data/migrations',
@@ -19,6 +16,10 @@ module.exports = {
     seeds: {
       directory: './data/seeds',
     },
+    pool: {
+      min: 2, 
+      max: 10,
+    }
   },
 
   production: {
@@ -27,7 +28,6 @@ module.exports = {
       host: 'localhost',
       port: 5432,
       user: 'postgres',
-      password: 'lambda123',
       database: 'postgres'
     },
     migrations: {
