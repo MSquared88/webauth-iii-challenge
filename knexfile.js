@@ -8,6 +8,7 @@ module.exports = {
       host: 'localhost',
       port: 5432,
       user: 'postgres',
+      password: 'lambda123',
       database: 'postgres'
     },
     migrations: {
